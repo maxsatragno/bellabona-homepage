@@ -65,8 +65,29 @@ Full architecture plan (frozen): `/Users/maximilianosatragno/.claude/plans/tengo
 
 ## Account context
 
-- **GitHub remote (for Phase 7 deploy):** `github.com/maxsatragno/<repo-name>`. The user has a second corporate GitHub account; do NOT use it. Only `maxsatragno`.
+- **GitHub remote:** `github.com/maxsatragno/bellabona-homepage`. The user has a second corporate GitHub account (`max-satragno`) — do NOT use it for anything in this repo.
 - **Sanity project:** `finqjjyw` (org `olyoMyfZg`), dataset `production`. Credentials in `.env.local` only.
+
+## Git author identity (THIS REPO ONLY)
+
+The repo's **local** git config is pinned to the user's personal identity. It overrides the corporate-tagged global config without modifying it (other repos on this machine are unaffected):
+
+```
+git config user.name  "Maximiliano Satragno"
+git config user.email "maxi.satragno@gmail.com"
+```
+
+**Rules for commits in this repo:**
+
+1. **Sole author = `Maximiliano Satragno <maxi.satragno@gmail.com>`.** NEVER commit with the corporate `max-satragno <maximiliano.satragno@accelone.com>` identity. If you ever see that email leak into a commit, reset the local config and amend (`git commit --amend --reset-author --no-edit`).
+
+2. **No `Co-Authored-By` trailers.** Do NOT append the Claude / agent co-author trailer that is the default in many sessions. The user is the **sole** author of every commit in this repo. If a commit accidentally lands with the trailer, amend the message and force-push.
+
+3. **macOS Keychain caveat.** Some sessions may push using the corporate user `max-satragno` cached in the macOS Keychain — that does NOT affect commit attribution (which is governed by `user.email` above) but it does record the **push event** under the corporate user in GitHub's activity feed. Ideal flow before pushing in this repo:
+   ```
+   git credential-osxkeychain erase < <(echo -e "protocol=https\nhost=github.com\n")
+   ```
+   then push and authenticate as `maxsatragno` in the OAuth prompt.
 
 ## Working norms
 
