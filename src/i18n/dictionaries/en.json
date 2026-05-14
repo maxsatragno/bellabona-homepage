@@ -1,0 +1,22 @@
+{
+  "common": {
+    "skipToContent": "Skip to content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "languageSwitcher": "Language",
+    "loading": "Loading…",
+    "closeDialog": "Close dialog",
+    "demoModalTitle": "Request a demo",
+    "demoModalBody": "Thanks for your interest. We will follow up with next steps shortly.",
+    "notFoundTitle": "Page not found",
+    "notFoundDescription": "The page you're looking for doesn't exist or may have been moved.",
+    "notFoundBackHome": "Back to home"
+  },
+  "footer": {
+    "copyright": "All rights reserved.",
+    "socialAriaLabel": "Bella&Bona on {platform}"
+  },
+  "a11y": {
+    "decorative": ""
+  }
+}

@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+/*
+  Tailwind v4 theme tokens.
+  Brand palette derived from the Figma export of Bella&Bona homepage (`doc/Online Kanteen_Main.svg`).
+  Primary brand green detected in the SVG: #024930.
+  Replace/refine these values once the canonical Figma tokens are available.
+*/
+
+@theme {
+  /* ----- Brand colors ----- */
+  --color-brand-50: #e8f0ec;
+  --color-brand-100: #c4d8cd;
+  --color-brand-200: #9bbeac;
+  --color-brand-300: #6fa389;
+  --color-brand-400: #438c6c;
+  --color-brand-500: #1d7551;
+  --color-brand-600: #0e5d3f;
+  --color-brand-700: #024930; /* primary */
+  --color-brand-800: #013724;
+  --color-brand-900: #012518;
+
+  /* Lemon accent — used for text and CTAs over dark green backgrounds */
+  --color-lemon: #E6FFA9;
+  --color-lemon-dim: #cef07a;
+
+  /* Red accent */
+  --color-red: #9A0103;
+  --color-light-red: #FFF0ED;
+
+  /* Light green accent */
+  --color-light-green: #F9FFE9;
+
+  /* Functional */
+  --color-ink: #0b1411;
+  --color-muted: #4a5a52;
+  --color-line: #d8dfdb;
+
+  /* Page surface */
+  --color-background: #ffffff;
+  --color-foreground: var(--color-ink);
+
+  /* ----- Spacing & layout ----- */
+  --spacing-section: 6rem; /* vertical rhythm between sections, override per breakpoint as needed */
+  --container-content: 1280px; /* max content width */
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-figtree), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Skip link target (i18n a11y) */
+[data-skip-target]:focus {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 4px;
+}
+
+/* Reveal-on-scroll utility — used by <RevealOnScroll>. */
+/* Default state is "before reveal". The `.is-visible` class is toggled by IntersectionObserver. */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 600ms ease-out,
+    transform 600ms ease-out;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
